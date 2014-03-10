@@ -1,0 +1,36 @@
+<div id="main">
+  Login within application
+  <form>
+    <fieldset>
+      <label for="username">Usuario</label>
+      <input type="text" name="username" ng-model="username">
+    </fieldset>
+    <fieldset>
+      <label for="password">Contraseña</label>
+      <input type="password" name="password" ng-model="password">
+    </fieldset>
+    <button ng-click="loginBtn()">Log in</button>
+    <button ng-click="logoutBtn()">Log out</button>
+  </form>
+  <br>
+  <pre>
+User: {{user || null | json}}
+  </pre>
+  <div id="todos">
+    <ul>
+      <li ng-repeat="todo in todos">
+        {{todo.title}}
+        <input type="checkbox" ng-model="todo.done" ng-change="checkTask()">
+        <div 
+          style="margin-left: 10px; text-decoration: underline; display: inline-block" 
+          ng-click="removeTask(todo._id)">
+          delete
+        </div>
+      </li>
+    </ul>
+    <label for="">Insert a new Task</label>
+    <input type="text" ng-model="task">
+    <input type="submit" ng-click="insertTask()">
+  </div>
+  
+</div>
