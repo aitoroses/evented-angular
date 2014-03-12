@@ -37,7 +37,7 @@
   },
   "repository": {},
   "dependencies": {
-    "socket.io": "~0.9.16"
-    "evented.io-client": "~0.0.1"
+    "socket.io": "~0.9.16",
+    "evented.io-client": "~0.0.3"
   }
 }
