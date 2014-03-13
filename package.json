@@ -1,6 +1,6 @@
 {
   "name": "evented-angular",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "scripts": {
     "postinstall": "node ./node_modules/bower/bin/bower install"
   },
@@ -20,7 +20,7 @@
     "karma-chrome-launcher": "~0.1.0",
     "karma-html2js-preprocessor": "~0.1.0",
     "karma-jasmine": "~0.1.3",
-    "karma-requirejs": "~0.1.0",
+    "karma-requirejs": "~0.2.0",
     "karma-coffee-preprocessor": "~0.1.0",
     "karma-phantomjs-launcher": "~0.1.0",
     "karma-coverage": "~0.1.0",
@@ -38,6 +38,6 @@
   "repository": {},
   "dependencies": {
     "socket.io": "~0.9.16",
-    "evented.io-client": "~0.0.3"
+    "evented.io-client": "~0.0.4"
   }
 }
