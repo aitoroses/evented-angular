@@ -159,8 +159,7 @@ module.exports = function(grunt) {
         singleRun: true,
         reporters: ['progress', 'coverage'],
         preprocessors: {
-          'app/**/*.js': ['coverage'],
-          'evented.io-client/lib/evented.js': ['coverage']
+          'app/**/*.js': ['coverage']
         },
         coverageReporter: {
           type : 'html',

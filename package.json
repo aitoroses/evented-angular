@@ -1,6 +1,7 @@
 {
   "name": "evented-angular",
   "version": "0.0.2",
+  "description": "Angular app with its own modules to create Evented applications",
   "scripts": {
     "postinstall": "node ./node_modules/bower/bin/bower install"
   },
@@ -35,7 +36,10 @@
     "coffee-loader": "~0.6.1",
     "script-loader": "~0.5.2"
   },
-  "repository": {},
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/aitoroses/evented-seed"
+  },
   "dependencies": {
     "socket.io": "~0.9.16",
     "evented.io-client": "~0.0.4"
