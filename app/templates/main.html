@@ -1,6 +1,15 @@
 <div id="main">
-  Login within application
-  <form>
+<pre>
+     
+        _______    _________   __________________     ________ 
+       / ____/ |  / / ____/ | / /_  __/ ____/ __ \   /  _/ __ \
+      / __/  | | / / __/ /  |/ / / / / __/ / / / /   / // / / /
+     / /___  | |/ / /___/ /|  / / / / /___/ /_/ /  _/ // /_/ / 
+    /_____/  |___/_____/_/ |_/ /_/ /_____/_____/  /___/\____/  
+                                                               
+    DEMO by Aitor Osés
+</pre>    
+  <form ng-hide="user">
     <fieldset>
       <label for="username">Usuario</label>
       <input type="text" name="username" ng-model="username">
@@ -9,28 +18,46 @@
       <label for="password">Contraseña</label>
       <input type="password" name="password" ng-model="password">
     </fieldset>
-    <button ng-click="loginBtn()">Log in</button>
-    <button ng-click="logoutBtn()">Log out</button>
+    <div class="control" ng-click="loginBtn()">Login</div>
   </form>
   <br>
-  <pre>
+
+  <!-- <pre>
 User: {{user || null | json}}
-  </pre>
-  <div id="todos">
-    <ul>
-      <li ng-repeat="todo in todos">
-        {{todo.title}}
-        <input type="checkbox" ng-model="todo.done" ng-change="checkTask()">
-        <div 
-          style="margin-left: 10px; text-decoration: underline; display: inline-block" 
-          ng-click="removeTask(todo._id)">
-          delete
-        </div>
-      </li>
-    </ul>
-    <label for="">Insert a new Task</label>
-    <input type="text" ng-model="task">
-    <input type="submit" ng-click="insertTask()">
+  </pre> -->
+
+  <div id="todoapp" ng-show="user">
+    <header id="header">
+      <h1>Tareas</h1>
+      <!-- <label for="">¿Que tienes que hacer?</label> -->
+      <input id="new-todo" type="text" ng-model="task" placeholder="¿Que tienes que hacer?" ng-keypress="insertTask($event)">
+      <!-- <input type="submit" ng-click="insertTask()"> -->
+    </header>
+    <section id="main">
+      <input type="checkbox" id="toggle-all" ng-model="toggle">
+      <ul id="todo-list" ng-hide="toggle">
+        <li ng-repeat="todo in todos">
+          <div class="view">
+            <input class="toggle" type="checkbox" ng-model="todo.done" ng-change="checkTask()">
+            <label>{{todo.title}}</label>
+            <button class="destroy" ng-click="removeTask(todo._id)"></button>
+          </div>
+          <!-- <div 
+            style="margin-left: 10px; text-decoration: underline; display: inline-block" 
+            ng-click="removeTask(todo._id)">
+            delete
+          </div> -->
+        </li>
+      </ul>
+    </section>
+    <footer id="footer">
+      <span id="todo-count">
+        <strong ng-show="uncompleted()">{{uncompleted()}}</strong>
+        <span ng-show="uncompleted()==1">tarea restante</span>
+        <span ng-show="uncompleted()>1">tareas restantes</span>
+        <span ng-show="!uncompleted()">Todas las tareas finalizadas</span>
+      </span>
+    </footer>
   </div>
-  
+  <div class="control" ng-click="logoutBtn()" ng-show="user">Salir</div>
 </div>

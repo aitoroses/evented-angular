@@ -24,12 +24,13 @@ angular.module('ngEvented.controllers').controller 'mainCtrl',[
       Todo.update {_id: id}, {done: done}
 
     # Insert new
-    $scope.insertTask = ->
-      userId = Evented.user()._id
-      todo = $scope.task.trim()
-      if typeof todo is "string" and todo isnt ""
-        Todo.insert({title: todo, done: false, user_id: userId})
-        $scope.task = null
+    $scope.insertTask = (ev)->
+      if event.which is 13
+        userId = Evented.user()._id
+        todo = $scope.task.trim()
+        if typeof todo is "string" and todo isnt ""
+          Todo.insert({title: todo, done: false, user_id: userId})
+          $scope.task = null
 
     # Delete
     $scope.removeTask = (id) ->
@@ -46,6 +47,13 @@ angular.module('ngEvented.controllers').controller 'mainCtrl',[
     $scope.logoutBtn = ->
       $http.get("#{$evented.url}/v1/logout").success ->
         $evented.emit "user"
+
+    # Uncompleted
+    $scope.uncompleted = ->
+      uncompleted = 0
+      for task in $scope.todos
+        if task.done is false then uncompleted++
+      if uncompleted is 0 then return false else return uncompleted
 
     return
 ]
